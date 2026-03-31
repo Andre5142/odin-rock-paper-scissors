@@ -5,6 +5,8 @@ const paper = "paper"
 const scissors = "scissors"
 let player_count = 0
 let comp_count = 0
+let round_count = 0
+let round_winner
 
 function getComputerChoice() {
     randomNumber = Math.floor(Math.random() * 100)
@@ -22,7 +24,7 @@ function getComputerChoice() {
 
 function getPlayerChoice() {
     player_choice = prompt("1 = 'rock' 2 = 'paper' 3 = 'scissors'")
-    return player_choice
+    return parseInt(player_choice % 3)
 }
 
 function winCondition(player, comp) {
@@ -53,10 +55,13 @@ function winCondition(player, comp) {
         round_winner = "player"
         player_count++
     }
-    return round_winner
+    round_count++
 }
 
-console.log(getComputerChoice(), getPlayerChoice())
-console.log(winCondition(getComputerChoice(), getPlayerChoice()))
-console.log()
+do {
+    winCondition(getPlayerChoice(), getComputerChoice())
+    console.log("winner = " + round_winner + "  score = player " + player_count + "  comp " + comp_count)
+} while (round_count < 6)
+
+
 
