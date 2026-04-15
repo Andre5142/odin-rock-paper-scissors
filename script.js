@@ -1,13 +1,52 @@
+
+//Entities________________________________________________________________________________________________________
 const player = "player"
 const comp = "comp"
 const rock = "rock"
 const paper = "paper"
 const scissors = "scissors"
+
+//Counters_________________________________________________________________________________________________________
 let player_count = 0
 let comp_count = 0
 let round_count = 0
-let round_winner
 
+//Conditions________________________________________________________________________________________________________
+let round_winner
+let gameOn = false
+
+//Elements________________________________________________________________________________________________________
+const mainBox = document.querySelector("#mainBox")
+const playButton = document.querySelector("#playButton")
+
+//Start_Menu_____________________________________________________________________________________________________
+
+playButton.addEventListener("click", (event) =>{
+    event.preventDefault()
+
+    const roundChoice = document.createElement("div")
+    const roundThree = document.createElement("button")
+    const roundFive = document.createElement("button")
+    const roundSeven = document.createElement("button")
+    const gameStart = document.createElement("button")
+
+    roundThree.textContent= "3 Rounds"
+    roundFive.textContent= "5 Rounds"
+    roundSeven.textContent= "7 Rounds"
+
+    roundChoice.appendChild(roundThree)
+    roundChoice.appendChild(roundFive)
+    roundChoice.appendChild(roundSeven)
+
+    mainBox.appendChild(roundChoice)
+    mainBox.appendChild(gameStart)
+
+    console.log("ok")
+
+})
+
+
+//Game_Logic____________________________________________________________________________________________________
 function getComputerChoice() {
     randomNumber = Math.floor(Math.random() * 100)
     if (randomNumber <= 33) {
@@ -57,8 +96,3 @@ function winCondition(player, comp) {
     }
     round_count++
 }
-                                               // change
-
-
-
-
