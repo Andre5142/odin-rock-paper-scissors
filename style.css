@@ -1,0 +1,63 @@
+*{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+body{
+    display: flex;
+    margin:0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.all{
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    background-color: rgba(6, 96, 18, 0.623);
+    padding: 10px;
+    width: 100vw;
+}
+
+h1{
+    justify-self: center;
+    font-size: 40px;
+}
+
+.main{
+    display: flex;
+    height: 100%;
+    background-color: rgba(6, 96, 18, 0.124);
+    justify-content: center;
+}
+
+.mainBox{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 70%;
+    margin-right: 0;
+    margin-left: 0;
+    border: black solid 3px;
+    border-radius: 15px;
+}
+
+footer{
+    background-color: rgba(6, 96, 18, 0.623);
+    padding: 15px;
+
+
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.footNote{
+    justify-self: center;
+}
+
+
+

@@ -23,7 +23,7 @@ function getComputerChoice() {
 }
 
 function getPlayerChoice() {
-    player_choice = prompt("1 = 'rock' 2 = 'paper' 3 = 'scissors'")
+    player_choice = prompt("1 = 'rock' 2 = 'paper' 3 = 'scissors'")     //change
     return parseInt(player_choice % 3)
 }
 
@@ -57,11 +57,8 @@ function winCondition(player, comp) {
     }
     round_count++
 }
+                                               // change
 
-do {
-    winCondition(getPlayerChoice(), getComputerChoice())
-    console.log("winner = " + round_winner + "  score = player " + player_count + "  comp " + comp_count)
-} while (round_count < 6)
 
 
 
