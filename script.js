@@ -94,15 +94,17 @@ playButton.addEventListener("click", (event) => {
     const roundThree = document.createElement("button")
     const roundFive = document.createElement("button")
     const roundSeven = document.createElement("button")
+    const gameStartBox = document.createElement("div")
     const gameStart = document.createElement("button")
 
-    //Start_ID/Class___________________________________________________________________________________________________
+    //Start_ID/Class________________________________________________________________________________________________
 
     roundChoice.id = "roundChoice"
     roundThree.className = "roundChoice"
     roundFive.className = "roundChoice"
     roundSeven.className = "roundChoice"
-    gameStart.className = "roundConfirm"
+    gameStartBox.className = "gameStartBox"
+    gameStart.className = "gameStart"
 
 
     //Start_Context__________________________________________________________________________________________________
@@ -116,8 +118,10 @@ playButton.addEventListener("click", (event) => {
     roundChoice.appendChild(roundFive)
     roundChoice.appendChild(roundSeven)
 
+    gameStartBox.appendChild(gameStart)
+
     mainBox.appendChild(roundChoice)
-    mainBox.appendChild(gameStart)
+    mainBox.appendChild(gameStartBox)
 
     mainBox.removeChild(playButton)
 
@@ -163,6 +167,7 @@ playButton.addEventListener("click", (event) => {
         }
     })
 
+    //Start_Button_________________________________________________________________________________________________
     gameStart.addEventListener("click", (event) => {
         event.preventDefault()
 
@@ -172,13 +177,14 @@ playButton.addEventListener("click", (event) => {
             noRoundSelect.id = "warnText"
             noRoundSelect.textContent = "Please select a round limit!"
 
-            mainBox.appendChild(noRoundSelect)
+            gameStartBox.appendChild(noRoundSelect)
             warnText = true
         }
+        else if (three == false && five == false && seven == false){}
         else {
             mainBox.removeChild(roundChoice)
-            mainBox.removeChild(gameStart)
-
+            mainBox.removeChild(gameStartBox)
+            
             mainGame()
         }
     })
@@ -207,9 +213,12 @@ function roundSelector(round) {
     }
 }
 
-//Main_Game____________________________________________________________________________________________________________
+//Main_Game_______________________________________________________________________________________________________
 
 function mainGame() {
+
+    //Scoreboard__________________________________________________________________________________________________
+
     const scoreBoardBox = document.createElement("div")
     const scoreText = document.createElement("span")
     const scorePointOne = document.createElement("div")
@@ -256,6 +265,30 @@ function mainGame() {
         scoreBoardBox.appendChild(scorePointSeven)
     }
 
-    const palyField = document.createElement("div")
+    //Playing_field_____________________________________________________________________________________________________
 
+    const playField = document.createElement("div")
+    const playFieldPlayerOneBox = document.createElement("div")
+    const playFieldPlayerTwoBox = document.createElement("div")
+    const playFieldPlayerOneText = document.createElement("span")
+    const playFieldPlayerTwoText = document.createElement("span")
+    const playFieldPlayerOne = document.createElement("div")
+    const playFieldPlayerTwo = document.createElement("div")
+
+    playFieldPlayerOneText.textContent = "You"
+    playFieldPlayerTwoText.textContent = "ComPlayer"
+
+    playField.id = "playField"
+    playFieldPlayerOneBox.id = "playFieldPlayerBox"
+    playFieldPlayerTwoBox.id = "playFieldPlayerBox"
+    playFieldPlayerOne.id = "playFieldPlayer"
+    playFieldPlayerTwo.id = "playFieldPlayer"
+
+    mainBox.appendChild(playField)
+    playField.appendChild(playFieldPlayerOneBox)
+    playField.appendChild(playFieldPlayerTwoBox)
+    playFieldPlayerOneBox.appendChild(playFieldPlayerOneText)
+    playFieldPlayerOneBox.appendChild(playFieldPlayerOne)
+    playFieldPlayerTwoBox.appendChild(playFieldPlayerTwoText)
+    playFieldPlayerTwoBox.appendChild(playFieldPlayerTwo)
 }
