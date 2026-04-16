@@ -103,6 +103,32 @@ h1 {
     font-size: 15px;
 }
 
+/*maingame*/
+
+#scoreBoardBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    align-self: center;
+    border: solid black 3px;
+    border-radius: 50px;
+    width: 50%;
+    height: 7%;
+}
+
+.scorePoint{
+    align-self: center;
+    border: solid black 3px;
+    height: 70%;
+    width: 9%;
+    border-radius: 50px;
+}
+
+#scoreText{
+    align-self: center;
+}
+
 footer {
     background-color: rgba(6, 96, 18, 0.623);
     padding: 15px;

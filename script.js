@@ -11,7 +11,7 @@ const scissors = "scissors"
 
 let player_count = 0
 let comp_count = 0
-let round_count = 0
+let roundCount = 0
 
 //Conditions________________________________________________________________________________________________________
 
@@ -166,19 +166,22 @@ playButton.addEventListener("click", (event) => {
     gameStart.addEventListener("click", (event) => {
         event.preventDefault()
 
-        if (three == false && five == false && seven == false && warnText == false){
+        if (three == false && five == false && seven == false && warnText == false) {
             const noRoundSelect = document.createElement("span")
 
             noRoundSelect.id = "warnText"
             noRoundSelect.textContent = "Please select a round limit!"
-            
+
             mainBox.appendChild(noRoundSelect)
             warnText = true
         }
-        else{
+        else {
+            mainBox.removeChild(roundChoice)
+            mainBox.removeChild(gameStart)
 
+            mainGame()
         }
-})
+    })
 })
 
 //Round_Select______________________________________________________________________________________________________
@@ -206,3 +209,53 @@ function roundSelector(round) {
 
 //Main_Game____________________________________________________________________________________________________________
 
+function mainGame() {
+    const scoreBoardBox = document.createElement("div")
+    const scoreText = document.createElement("span")
+    const scorePointOne = document.createElement("div")
+    const scorePointTwo = document.createElement("div")
+    const scorePointThree = document.createElement("div")
+    const scorePointFour = document.createElement("div")
+    const scorePointFive = document.createElement("div")
+    const scorePointSix = document.createElement("div")
+    const scorePointSeven = document.createElement("div")
+
+    scoreBoardBox.id = "scoreBoardBox"
+    scoreText.id = "scoreText"
+    scorePointOne.className = "scorePoint"
+    scorePointTwo.className = "scorePoint"
+    scorePointThree.className = "scorePoint"
+    scorePointFour.className = "scorePoint"
+    scorePointFive.className = "scorePoint"
+    scorePointSix.className = "scorePoint"
+    scorePointSeven.className = "scorePoint"
+
+    scorePointOne.textContent = ""
+    scorePointTwo.textContent = ""
+    scorePointThree.textContent = ""
+    scorePointFour.textContent = ""
+    scorePointFive.textContent = ""
+    scorePointSix.textContent = ""
+    scorePointSeven.textContent = ""
+    scoreText.textContent = "SCORE"
+    mainBox.appendChild(scoreText)
+    mainBox.appendChild(scoreBoardBox)
+
+    scoreBoardBox.appendChild(scorePointOne)
+    scoreBoardBox.appendChild(scorePointTwo)
+    scoreBoardBox.appendChild(scorePointThree)
+
+    if (five == true) {
+        scoreBoardBox.appendChild(scorePointFour)
+        scoreBoardBox.appendChild(scorePointFive)
+    }
+    if (seven == true) {
+        scoreBoardBox.appendChild(scorePointFour)
+        scoreBoardBox.appendChild(scorePointFive)
+        scoreBoardBox.appendChild(scorePointSix)
+        scoreBoardBox.appendChild(scorePointSeven)
+    }
+
+    const palyField = document.createElement("div")
+
+}
