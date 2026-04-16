@@ -1,5 +1,6 @@
 
 //Entities________________________________________________________________________________________________________
+
 const player = "player"
 const comp = "comp"
 const rock = "rock"
@@ -7,46 +8,28 @@ const paper = "paper"
 const scissors = "scissors"
 
 //Counters_________________________________________________________________________________________________________
+
 let player_count = 0
 let comp_count = 0
 let round_count = 0
 
 //Conditions________________________________________________________________________________________________________
+
 let round_winner
 let gameOn = false
+let tree = false
+let five = false
+let seven = false
 
 //Elements________________________________________________________________________________________________________
+
 const mainBox = document.querySelector("#mainBox")
-const playButton = document.querySelector("#playButton")
+const playButton = document.createElement("button")
 
-//Start_Menu_____________________________________________________________________________________________________
-
-playButton.addEventListener("click", (event) =>{
-    event.preventDefault()
-
-    const roundChoice = document.createElement("div")
-    const roundThree = document.createElement("button")
-    const roundFive = document.createElement("button")
-    const roundSeven = document.createElement("button")
-    const gameStart = document.createElement("button")
-
-    roundThree.textContent= "3 Rounds"
-    roundFive.textContent= "5 Rounds"
-    roundSeven.textContent= "7 Rounds"
-
-    roundChoice.appendChild(roundThree)
-    roundChoice.appendChild(roundFive)
-    roundChoice.appendChild(roundSeven)
-
-    mainBox.appendChild(roundChoice)
-    mainBox.appendChild(gameStart)
-
-    console.log("ok")
-
-})
-
+playButton.id = "playButton"
 
 //Game_Logic____________________________________________________________________________________________________
+
 function getComputerChoice() {
     randomNumber = Math.floor(Math.random() * 100)
     if (randomNumber <= 33) {
@@ -96,3 +79,53 @@ function winCondition(player, comp) {
     }
     round_count++
 }
+
+//Start_Menu_____________________________________________________________________________________________________
+
+playButton.textContent = "PLAY"
+mainBox.appendChild(playButton)
+
+
+playButton.addEventListener("click", (event) => {
+    event.preventDefault()
+
+    const roundChoice = document.createElement("div")
+    const roundThree = document.createElement("button")
+    const roundFive = document.createElement("button")
+    const roundSeven = document.createElement("button")
+    const gameStart = document.createElement("button")
+    
+    //Start_ID/Class___________________________________________________________________________________________________
+    
+    roundChoice.id = "roundChoice"
+    roundThree.className = "roundChoice"
+    roundFive.className = "roundChoice"
+    roundSeven.className = "roundChoice"
+    gameStart.className = "roundConfirm"
+
+
+    //Start_Context__________________________________________________________________________________________________
+
+    roundThree.textContent = "3 Rounds"
+    roundFive.textContent = "5 Rounds"
+    roundSeven.textContent = "7 Rounds"
+    gameStart.textContent = "START"
+
+    roundChoice.appendChild(roundThree)
+    roundChoice.appendChild(roundFive)
+    roundChoice.appendChild(roundSeven)
+
+    mainBox.appendChild(roundChoice)
+    mainBox.appendChild(gameStart)
+
+    mainBox.removeChild(playButton)
+
+
+    //Round_Choice___________________________________________________________________________________________________
+
+    roundThree.addEventListener("click", (event) => {
+        event.preventDefault()
+
+        three = true
+    })
+})
