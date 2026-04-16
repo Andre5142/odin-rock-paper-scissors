@@ -17,9 +17,10 @@ let round_count = 0
 
 let round_winner
 let gameOn = false
-let tree = false
+let three = false
 let five = false
 let seven = false
+let warnText = false
 
 //Elements________________________________________________________________________________________________________
 
@@ -94,9 +95,9 @@ playButton.addEventListener("click", (event) => {
     const roundFive = document.createElement("button")
     const roundSeven = document.createElement("button")
     const gameStart = document.createElement("button")
-    
+
     //Start_ID/Class___________________________________________________________________________________________________
-    
+
     roundChoice.id = "roundChoice"
     roundThree.className = "roundChoice"
     roundFive.className = "roundChoice"
@@ -126,6 +127,82 @@ playButton.addEventListener("click", (event) => {
     roundThree.addEventListener("click", (event) => {
         event.preventDefault()
 
-        three = true
+        roundSelector("three")
+
+        if (three = true) {
+            roundThree.id = "roundChoiceSelect"
+            roundFive.id = "roundChoiceNot"
+            roundSeven.id = "roundChoiceNot"
+            gameStart.id = "roundChoiceSelect"
+        }
     })
+
+    roundFive.addEventListener("click", (event) => {
+        event.preventDefault()
+
+        roundSelector("five")
+
+        if (five = true) {
+            roundThree.id = "roundChoiceNot"
+            roundFive.id = "roundChoiceSelect"
+            roundSeven.id = "roundChoiceNot"
+            gameStart.id = "roundChoiceSelect"
+        }
+    })
+
+    roundSeven.addEventListener("click", (event) => {
+        event.preventDefault()
+
+        roundSelector("seven")
+
+        if (seven = true) {
+            roundThree.id = "roundChoiceNot"
+            roundFive.id = "roundChoiceNot"
+            roundSeven.id = "roundChoiceSelect"
+            gameStart.id = "roundChoiceSelect"
+        }
+    })
+
+    gameStart.addEventListener("click", (event) => {
+        event.preventDefault()
+
+        if (three == false && five == false && seven == false && warnText == false){
+            const noRoundSelect = document.createElement("span")
+
+            noRoundSelect.id = "warnText"
+            noRoundSelect.textContent = "Please select a round limit!"
+            
+            mainBox.appendChild(noRoundSelect)
+            warnText = true
+        }
+        else{
+
+        }
 })
+})
+
+//Round_Select______________________________________________________________________________________________________
+
+function roundSelector(round) {
+    if (round = "three") {
+        three = true
+        five = false
+        seven = false
+        return "three"
+    }
+    else if (round = "five") {
+        three = false
+        five = true
+        seven = false
+        return "five"
+    }
+    else {
+        three = false
+        five = false
+        seven = true
+        return "seven"
+    }
+}
+
+//Main_Game____________________________________________________________________________________________________________
+
