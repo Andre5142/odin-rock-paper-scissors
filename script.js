@@ -180,12 +180,12 @@ playButton.addEventListener("click", (event) => {
             gameStartBox.appendChild(noRoundSelect)
             warnText = true
         }
-        else if (three == false && five == false && seven == false){}
+        else if (three == false && five == false && seven == false) { }
         else {
             mainBox.removeChild(roundChoice)
             mainBox.removeChild(gameStartBox)
-            
-            mainGame()
+
+            scoreBoard()
         }
     })
 })
@@ -215,7 +215,7 @@ function roundSelector(round) {
 
 //Main_Game_______________________________________________________________________________________________________
 
-function mainGame() {
+function scoreBoard() {
 
     //Scoreboard__________________________________________________________________________________________________
 
@@ -264,9 +264,12 @@ function mainGame() {
         scoreBoardBox.appendChild(scorePointSix)
         scoreBoardBox.appendChild(scorePointSeven)
     }
+    playingField()
+}
 
-    //Playing_field_____________________________________________________________________________________________________
+//Playing_field_____________________________________________________________________________________________________
 
+function playingField() {
     const playField = document.createElement("div")
     const playFieldPlayerOneBox = document.createElement("div")
     const playFieldPlayerTwoBox = document.createElement("div")
@@ -274,6 +277,11 @@ function mainGame() {
     const playFieldPlayerTwoText = document.createElement("span")
     const playFieldPlayerOne = document.createElement("div")
     const playFieldPlayerTwo = document.createElement("div")
+
+    const selectChoiceBox = document.createElement("div")
+    const selectChoiceRock = document.createElement("button")
+    const selectChoicePaper = document.createElement("button")
+    const selectChoiceScissors = document.createElement("button")
 
     playFieldPlayerOneText.textContent = "You"
     playFieldPlayerTwoText.textContent = "ComPlayer"
@@ -284,6 +292,11 @@ function mainGame() {
     playFieldPlayerOne.id = "playFieldPlayer"
     playFieldPlayerTwo.id = "playFieldPlayer"
 
+    selectChoiceBox.id = "selectChoiceBox"
+    selectChoiceRock.id = "selectChoice"
+    selectChoicePaper.id = "selectChoice"
+    selectChoiceScissors.id = "selectChoice"
+
     mainBox.appendChild(playField)
     playField.appendChild(playFieldPlayerOneBox)
     playField.appendChild(playFieldPlayerTwoBox)
@@ -291,4 +304,11 @@ function mainGame() {
     playFieldPlayerOneBox.appendChild(playFieldPlayerOne)
     playFieldPlayerTwoBox.appendChild(playFieldPlayerTwoText)
     playFieldPlayerTwoBox.appendChild(playFieldPlayerTwo)
+
+    mainBox.appendChild(selectChoiceBox)
+    selectChoiceBox.appendChild(selectChoiceRock)
+    selectChoiceBox.appendChild(selectChoicePaper)
+    selectChoiceBox.appendChild(selectChoiceScissors)
+
+
 }
