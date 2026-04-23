@@ -171,11 +171,12 @@ h1 {
 
 }
 
-/*Select_Choice______________________________________________________________________________________________________*/
+/*Select_Choice_Round_______________________________________________________________________________________________*/
 
 #selectChoiceBox{
     display: flex;
     justify-content: space-around;
+    margin-top: 5vh;
 }
 
 #selectChoice{
@@ -186,6 +187,32 @@ h1 {
     width: 15vh;
     height: 15vh;
 }
+
+/*Select_Choice_Player_______________________________________________________________________________________________*/
+
+#gameChoiceSelected{
+     display: flex;
+    border: solid black 3px;
+    background-color:  rgba(6, 96, 18, 0.623);
+    border-radius: 8px;
+    width: 15vh;
+    height: 15vh
+}
+
+#gameChoiceNot{
+     display: flex;
+    border: solid black 3px;
+    background-color: white;
+    border-radius: 8px;
+    width: 15vh;
+    height: 15vh;
+}
+
+#playerIcon{
+    height: inherit;
+    width: inherit;
+}
+
 
 /*Footer_______________________________________________________________________________________________________________*/
 
