@@ -171,6 +171,44 @@ h1 {
 
 }
 
+#playFieldConfirmBox{
+    justify-content: end;
+    width: 20vh;
+    height: 25vh;
+}
+
+#playFieldConfirmText{
+    font-size: 20px;
+    height: 25px;
+}
+
+#warnChoice{
+    font-size: 15px;
+    height: 25px;
+    color: red;
+}
+
+#playFieldConfirmButton{
+    justify-self: end;
+    border: solid black 3px;
+    background-color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    width: 20vh;
+    height: 15vh;
+}
+
+#playFieldConfirmButtonSelected{
+    justify-self: end;
+    border: solid black 3px;
+    background-color:  rgba(6, 96, 18, 0.623);
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    width: 20vh;
+    height: 15vh;
+}
+
 /*Select_Choice_Round_______________________________________________________________________________________________*/
 
 #selectChoiceBox{

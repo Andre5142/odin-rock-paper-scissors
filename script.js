@@ -9,22 +9,27 @@ const scissors = "scissors"
 
 //Counters_________________________________________________________________________________________________________
 
-let player_count = 0
-let comp_count = 0
+let playerCount = 0
+let compCount = 0
 let roundCount = 0
 
 //Conditions________________________________________________________________________________________________________
 
-let round_winner
+let roundWinner
+let gameWinner
 let gameOn = false
 let three = false
 let five = false
 let seven = false
 let warnText = false
+let warnChoice = false
 
 let rockChoice = false
 let paperChoice = false
 let scissorsChoice = false
+
+let playerChoice = 0
+let compChoice = 0
 
 
 //Elements________________________________________________________________________________________________________
@@ -59,6 +64,10 @@ const playFieldPlayerOneText = document.createElement("span")
 const playFieldPlayerTwoText = document.createElement("span")
 const playFieldPlayerOne = document.createElement("div")
 const playFieldPlayerTwo = document.createElement("div")
+
+const playFieldConfirmBox = document.createElement("div")
+const playFieldConfirmText = document.createElement("div")
+const playFieldConfirmButton = document.createElement("button")
 
 const selectChoiceBox = document.createElement("div")
 const selectChoiceRock = document.createElement("button")
@@ -96,58 +105,6 @@ scissorsSpritePlayer.id = "playerIcon"
 
 
 playButton.id = "playButton"
-
-//Game_Logic____________________________________________________________________________________________________
-
-function getComputerChoice() {
-    randomNumber = Math.floor(Math.random() * 100)
-    if (randomNumber <= 33) {
-        comp_choice = 1 //rock
-    }
-    else if (randomNumber >= 34 && randomNumber <= 66) {
-        comp_choice = 2 //paper
-    }
-    else {
-        comp_choice = 3 //scissors
-    }
-    return comp_choice
-}
-
-function getPlayerChoice() {
-    player_choice = prompt("1 = 'rock' 2 = 'paper' 3 = 'scissors'")     //change
-    return parseInt(player_choice % 3)
-}
-
-function winCondition(player, comp) {
-    if (player == comp) {
-        round_winner = "draw"
-    }
-    else if (player == 1 && comp == 2) {
-        round_winner = "comp"
-        comp_count++
-    }
-    else if (player == 2 && comp == 1) {
-        round_winner = "player"
-        player_count++
-    }
-    else if (player == 1 && comp == 3) {
-        round_winner = "player"
-        player_count++
-    }
-    else if (player == 3 && comp == 1) {
-        round_winner = "comp"
-        comp_count++
-    }
-    else if (player == 2 && comp == 3) {
-        round_winner = "comp"
-        comp_count++
-    }
-    else if (player == 3 && comp == 2) {
-        round_winner = "player"
-        player_count++
-    }
-    round_count++
-}
 
 //Start_Menu_____________________________________________________________________________________________________
 
@@ -335,6 +292,18 @@ function playingField() {
 
     mainBox.appendChild(playField)
     playField.appendChild(playFieldPlayerOneBox)
+
+    playFieldConfirmBox.id = "playFieldConfirmBox"
+    playFieldConfirmText.id = "playFieldConfirmText"
+    playFieldConfirmButton.id = "playFieldConfirmButton"
+
+    playFieldConfirmText.textContent = ""
+    playFieldConfirmButton.textContent = "CONFIRM"
+
+    playField.appendChild(playFieldConfirmBox)
+    playFieldConfirmBox.appendChild(playFieldConfirmText)
+    playFieldConfirmBox.appendChild(playFieldConfirmButton)
+
     playField.appendChild(playFieldPlayerTwoBox)
     playFieldPlayerOneBox.appendChild(playFieldPlayerOneText)
     playFieldPlayerOneBox.appendChild(playFieldPlayerOne)
@@ -349,6 +318,8 @@ function playingField() {
     gameChoices()
 }
 
+//Choice_Buttons_____________________________________________________________________________________________________
+
 function gameChoices() {
 
     selectChoiceRock.addEventListener("click", (event) => {
@@ -357,6 +328,7 @@ function gameChoices() {
         selectChoiceRock.id = "gameChoiceSelected"
         selectChoicePaper.id = "gameChoiceNot"
         selectChoiceScissors.id = "gameChoiceNot"
+        playFieldConfirmButton.id = "playFieldConfirmButtonSelected"
 
         gameChoiceRemover("rock")
         gameChoiceSelector("rock")
@@ -367,6 +339,7 @@ function gameChoices() {
         selectChoiceRock.id = "gameChoiceNot"
         selectChoicePaper.id = "gameChoiceSelected"
         selectChoiceScissors.id = "gameChoiceNot"
+        playFieldConfirmButton.id = "playFieldConfirmButtonSelected"
 
         gameChoiceRemover("paper")
         gameChoiceSelector("paper")
@@ -378,13 +351,33 @@ function gameChoices() {
         selectChoiceRock.id = "gameChoiceNot"
         selectChoicePaper.id = "gameChoiceNot"
         selectChoiceScissors.id = "gameChoiceSelected"
+        playFieldConfirmButton.id = "playFieldConfirmButtonSelected"
 
         gameChoiceRemover("scissors")
         gameChoiceSelector("scissors")
     })
 
+    //Confirm_Button__________________________________________________________________________________________________
+
+    playFieldConfirmButton.addEventListener("click", (event) => {
+        if (rockChoice == false && paperChoice == false && scissorsChoice == false && warnChoice == false) {
+            const noChoiceSelect = document.createElement("span")
+
+            playFieldConfirmText.id = "warnChoice"
+            playFieldConfirmText.textContent = "Please select an Element!"
+
+            playFieldConfirmBox.appendChild(noChoiceSelect)
+            warnChoice = true
+        }
+        else if (three == false && five == false && seven == false) { }
+        else {
+            playFieldConfirmBox.removeChild(noChoiceSelect)
+
+        }
+    })
 }
 
+//Choice_Selector_______________________________________________________________________________________________
 
 function gameChoiceSelector(choice) {
 
@@ -399,7 +392,7 @@ function gameChoiceSelector(choice) {
         rockChoice = false
         paperChoice = true
         scissorsChoice = false
-       
+
         playFieldPlayerOne.appendChild(paperSpritePlayer)
     }
     else {
@@ -431,5 +424,64 @@ function gameChoiceRemover(keep) {
     else if (keep == "scissors" && paperChoice == true) {
         playFieldPlayerOne.removeChild(paperSpritePlayer)
     }
-    else{}
+    else { }
+}
+
+function getPlayerChoice() {
+    if (rockChoice == true) {
+        playerChoice = 1
+    }
+    else if (paperChoice == true) {
+        playerChoice = 2
+    }
+    else if (scissorsChoice == true) {
+        playerChoice = 3
+    }
+}
+
+function getComputerChoice() {
+    randomNumber = Math.floor(Math.random() * 100)
+    if (randomNumber <= 33) {
+        compChoice = 1 //rock
+    }
+    else if (randomNumber >= 34 && randomNumber <= 66) {
+        compChoice = 2 //paper
+    }
+    else {
+        compChoice = 3 //scissors
+    }
+    return compChoice
+}
+
+//Game_Logic____________________________________________________________________________________________________
+
+function winCondition(player, comp) {
+    if (player == comp) {
+        roundWinner = "draw"
+    }
+    else if (player == 1 && comp == 2) {
+        round_winner = "comp"
+        comp_count++
+    }
+    else if (player == 2 && comp == 1) {
+        round_winner = "player"
+        player_count++
+    }
+    else if (player == 1 && comp == 3) {
+        round_winner = "player"
+        player_count++
+    }
+    else if (player == 3 && comp == 1) {
+        round_winner = "comp"
+        comp_count++
+    }
+    else if (player == 2 && comp == 3) {
+        round_winner = "comp"
+        comp_count++
+    }
+    else if (player == 3 && comp == 2) {
+        round_winner = "player"
+        player_count++
+    }
+    round_count++
 }
