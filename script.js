@@ -99,10 +99,15 @@ rockSpriteComp.src = "./icons/stone-96.png"
 paperSpriteComp.src = "./icons/paper-48.png"
 scissorsSpriteComp.src = "./icons/scissors-64.png"
 
+const noChoiceSelect = document.createElement("span")
+
 rockSpritePlayer.id = "playerIcon"
 paperSpritePlayer.id = "playerIcon"
 scissorsSpritePlayer.id = "playerIcon"
 
+rockSpriteComp.id = "playerIcon"
+paperSpriteComp.id = "playerIcon"
+scissorsSpriteComp.id = "playerIcon"
 
 playButton.id = "playButton"
 
@@ -361,20 +366,30 @@ function gameChoices() {
 
     playFieldConfirmButton.addEventListener("click", (event) => {
         if (rockChoice == false && paperChoice == false && scissorsChoice == false && warnChoice == false) {
-            const noChoiceSelect = document.createElement("span")
 
             playFieldConfirmText.id = "warnChoice"
             playFieldConfirmText.textContent = "Please select an Element!"
 
-            playFieldConfirmBox.appendChild(noChoiceSelect)
+            
             warnChoice = true
         }
-        else if (three == false && five == false && seven == false) { }
+        else if (three == false && five == false && seven == false) { return}
         else {
-            playFieldConfirmBox.removeChild(noChoiceSelect)
-
+            if (warnChoice == true) {
+                playFieldConfirmText.textContent = ""
+            }
+            gameInit()
         }
     })
+}
+
+//Game_Initializer______________________________________________________________________________________________
+
+function gameInit() {
+    getPlayerChoice()
+    getComputerChoice()
+    winCondition(playerChoice, compChoice)
+    compIconChanger()
 }
 
 //Choice_Selector_______________________________________________________________________________________________
@@ -460,28 +475,42 @@ function winCondition(player, comp) {
         roundWinner = "draw"
     }
     else if (player == 1 && comp == 2) {
-        round_winner = "comp"
-        comp_count++
+        roundWinner = "comp"
     }
     else if (player == 2 && comp == 1) {
-        round_winner = "player"
-        player_count++
+        roundWinner = "player"
     }
     else if (player == 1 && comp == 3) {
-        round_winner = "player"
-        player_count++
+        roundWinner = "player"
     }
     else if (player == 3 && comp == 1) {
-        round_winner = "comp"
-        comp_count++
+        roundWinner = "comp"
     }
     else if (player == 2 && comp == 3) {
-        round_winner = "comp"
-        comp_count++
+        roundWinner = "comp"
     }
     else if (player == 3 && comp == 2) {
-        round_winner = "player"
-        player_count++
+        roundWinner = "player"
     }
-    round_count++
+    console.log(roundWinner)
+}
+
+//Play_Field_Changer________________________________________________________________________________________
+
+function fieldChanger() {
+
+}
+
+//Play_Field_Comp_Icon________________________________________________________________________________________
+
+function compIconChanger() {
+    if (compChoice = 1) {
+        playFieldPlayerTwo.appendChild(rockSpriteComp)
+    }
+    else if (compChoice = 2) {
+        playFieldPlayerTwo.appendChild(paperSpriteComp)
+    }
+    else {
+        playFieldPlayerTwo.appendChild(scissorsSpriteComp)
+    }
 }
