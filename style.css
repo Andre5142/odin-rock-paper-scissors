@@ -53,7 +53,7 @@ h1 {
     background-color: rgba(6, 96, 18, 0.065);
 }
 
-#playButton {
+.playButton {
     align-self: center;
     margin-top: 10%;
     height: 20%;
@@ -65,7 +65,7 @@ h1 {
     background-color: rgba(6, 96, 18, 0.623);
 }
 
-#roundChoice {
+.roundChoiceClass {
     display: flex;
     height: 15vh;
     width: 80%;
@@ -74,14 +74,16 @@ h1 {
     gap: 3%;
 }
 
-#roundChoiceSelect {
+.roundChoiceSelect {
     background-color: rgba(6, 96, 18, 0.623);
     color: white;
-}
-
-.roundChoiceNot {
-    background-color: white;
-    color: black;
+    align-self: center;
+    margin-top: 10%;
+    height: 30%;
+    width: 20%;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 .roundChoice {
@@ -93,6 +95,17 @@ h1 {
     font-weight: bold;
     font-size: 25px;
     background-color: white;
+}
+
+.gameStartSelect {
+    align-self: center;
+    height: 10vh;
+    width: 100%;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 25px;
+    background-color: rgba(6, 96, 18, 0.623);
+    color: white;
 }
 
 .gameStart {
@@ -113,7 +126,7 @@ h1 {
     width: 20%;
 }
 
-#warnText{
+.warnText{
     align-self: center;
     color: red;
     font-size: 15px;
@@ -121,7 +134,7 @@ h1 {
 
 /*Score board___________________________________________________________________________________________________*/
 
-#scoreBoardBox{
+.scoreBoardBox{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -143,26 +156,26 @@ h1 {
     background-color: white;
 }
 
-#scoreText{
+.scoreText{
     align-self: center;
 }
 
 /*Playing_Field______________________________________________________________________________________________________*/
 
-#playField{
+.playField{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-top: 7vh;
 }
 
-#playFieldPlayerBox{
+.playFieldPlayerBox{
     border-radius: 8px;
     width: 25vh;
     height: 25vh;
 }
 
-#playFieldPlayer{
+.playFieldPlayer{
     border: solid black 3px;
     background-color: white;
     border-radius: 8px;
@@ -171,24 +184,24 @@ h1 {
 
 }
 
-#playFieldConfirmBox{
+.playFieldConfirmBox{
     justify-content: end;
     width: 20vh;
     height: 25vh;
 }
 
-#playFieldConfirmText{
+.playFieldConfirmText{
     font-size: 20px;
     height: 25px;
 }
 
-#warnChoice{
+.warnChoice{
     font-size: 15px;
     height: 25px;
     color: red;
 }
 
-#playFieldConfirmButton{
+.playFieldConfirmButton{
     justify-self: end;
     border: solid black 3px;
     background-color: white;
@@ -198,7 +211,7 @@ h1 {
     height: 15vh;
 }
 
-#playFieldConfirmButtonSelected{
+.playFieldConfirmButtonSelected{
     justify-self: end;
     border: solid black 3px;
     background-color:  rgba(6, 96, 18, 0.623);
@@ -211,13 +224,13 @@ h1 {
 
 /*Select_Choice_Round_______________________________________________________________________________________________*/
 
-#selectChoiceBox{
+.selectChoiceBox{
     display: flex;
     justify-content: space-around;
     margin-top: 5vh;
 }
 
-#selectChoice{
+.selectChoice{
     display: flex;
     border: solid black 3px;
     background-color: white;
@@ -228,7 +241,7 @@ h1 {
 
 /*Select_Choice_Player_______________________________________________________________________________________________*/
 
-#gameChoiceSelected{
+.gameChoiceSelected{
      display: flex;
     border: solid black 3px;
     background-color:  rgba(6, 96, 18, 0.623);
@@ -237,7 +250,7 @@ h1 {
     height: 15vh
 }
 
-#gameChoiceNot{
+.gameChoiceNot{
      display: flex;
     border: solid black 3px;
     background-color: white;
@@ -246,7 +259,7 @@ h1 {
     height: 15vh;
 }
 
-#playerIcon{
+.playerIcon{
     height: inherit;
     width: inherit;
 }

@@ -68,6 +68,7 @@ const playFieldPlayerTwo = document.createElement("div")
 const playFieldConfirmBox = document.createElement("div")
 const playFieldConfirmText = document.createElement("div")
 const playFieldConfirmButton = document.createElement("button")
+const playFieldChangeButton = document.createElement("button")
 
 const selectChoiceBox = document.createElement("div")
 const selectChoiceRock = document.createElement("button")
@@ -101,15 +102,15 @@ scissorsSpriteComp.src = "./icons/scissors-64.png"
 
 const noChoiceSelect = document.createElement("span")
 
-rockSpritePlayer.id = "playerIcon"
-paperSpritePlayer.id = "playerIcon"
-scissorsSpritePlayer.id = "playerIcon"
+rockSpritePlayer.className = "playerIcon"
+paperSpritePlayer.className = "playerIcon"
+scissorsSpritePlayer.className = "playerIcon"
 
-rockSpriteComp.id = "playerIcon"
-paperSpriteComp.id = "playerIcon"
-scissorsSpriteComp.id = "playerIcon"
+rockSpriteComp.className = "playerIcon"
+paperSpriteComp.className = "playerIcon"
+scissorsSpriteComp.className = "playerIcon"
 
-playButton.id = "playButton"
+playButton.className = "playButton"
 
 //Start_Menu_____________________________________________________________________________________________________
 
@@ -122,7 +123,7 @@ playButton.addEventListener("click", (event) => {
 
     //Start_ID/Class________________________________________________________________________________________________
 
-    roundChoice.id = "roundChoice"
+    roundChoice.className = "roundChoiceClass"
     roundThree.className = "roundChoice"
     roundFive.className = "roundChoice"
     roundSeven.className = "roundChoice"
@@ -157,10 +158,10 @@ playButton.addEventListener("click", (event) => {
         roundSelector("three")
 
         if (three = true) {
-            roundThree.id = "roundChoiceSelect"
-            roundFive.id = "roundChoiceNot"
-            roundSeven.id = "roundChoiceNot"
-            gameStart.id = "roundChoiceSelect"
+            roundThree.className = "roundChoiceSelect"
+            roundFive.className = "roundChoice"
+            roundSeven.className = "roundChoice"
+            gameStart.className = "gameStartSelect"
         }
     })
 
@@ -170,10 +171,10 @@ playButton.addEventListener("click", (event) => {
         roundSelector("five")
 
         if (five = true) {
-            roundThree.id = "roundChoiceNot"
-            roundFive.id = "roundChoiceSelect"
-            roundSeven.id = "roundChoiceNot"
-            gameStart.id = "roundChoiceSelect"
+            roundThree.className = "roundChoice"
+            roundFive.className = "roundChoiceSelect"
+            roundSeven.className = "roundChoice"
+            gameStart.className = "gameStartSelect"
         }
     })
 
@@ -183,10 +184,10 @@ playButton.addEventListener("click", (event) => {
         roundSelector("seven")
 
         if (seven = true) {
-            roundThree.id = "roundChoiceNot"
-            roundFive.id = "roundChoiceNot"
-            roundSeven.id = "roundChoiceSelect"
-            gameStart.id = "roundChoiceSelect"
+            roundThree.className = "roundChoice"
+            roundFive.className = "roundChoice"
+            roundSeven.className = "roundChoiceSelect"
+            gameStart.className = "gameStartSelect"
         }
     })
 
@@ -197,7 +198,7 @@ playButton.addEventListener("click", (event) => {
         if (three == false && five == false && seven == false && warnText == false) {
             const noRoundSelect = document.createElement("span")
 
-            noRoundSelect.id = "warnText"
+            noRoundSelect.className = "warnText"
             noRoundSelect.textContent = "Please select a round limit!"
 
             gameStartBox.appendChild(noRoundSelect)
@@ -242,8 +243,8 @@ function scoreBoard() {
 
     //Scoreboard__________________________________________________________________________________________________
 
-    scoreBoardBox.id = "scoreBoardBox"
-    scoreText.id = "scoreText"
+    scoreBoardBox.className = "scoreBoardBox"
+    scoreText.className = "scoreText"
     scorePointOne.className = "scorePoint"
     scorePointTwo.className = "scorePoint"
     scorePointThree.className = "scorePoint"
@@ -284,23 +285,23 @@ function playingField() {
     selectChoicePaper.appendChild(paperSprite)
     selectChoiceScissors.appendChild(scissorsSprite)
 
-    playField.id = "playField"
-    playFieldPlayerOneBox.id = "playFieldPlayerBox"
-    playFieldPlayerTwoBox.id = "playFieldPlayerBox"
-    playFieldPlayerOne.id = "playFieldPlayer"
-    playFieldPlayerTwo.id = "playFieldPlayer"
+    playField.className = "playField"
+    playFieldPlayerOneBox.className = "playFieldPlayerBox"
+    playFieldPlayerTwoBox.className = "playFieldPlayerBox"
+    playFieldPlayerOne.className = "playFieldPlayer"
+    playFieldPlayerTwo.className = "playFieldPlayer"
 
-    selectChoiceBox.id = "selectChoiceBox"
-    selectChoiceRock.id = "selectChoice"
-    selectChoicePaper.id = "selectChoice"
-    selectChoiceScissors.id = "selectChoice"
+    selectChoiceBox.className = "selectChoiceBox"
+    selectChoiceRock.className = "selectChoice"
+    selectChoicePaper.className = "selectChoice"
+    selectChoiceScissors.className = "selectChoice"
 
     mainBox.appendChild(playField)
     playField.appendChild(playFieldPlayerOneBox)
 
-    playFieldConfirmBox.id = "playFieldConfirmBox"
-    playFieldConfirmText.id = "playFieldConfirmText"
-    playFieldConfirmButton.id = "playFieldConfirmButton"
+    playFieldConfirmBox.className = "playFieldConfirmBox"
+    playFieldConfirmText.className = "playFieldConfirmText"
+    playFieldConfirmButton.className = "playFieldConfirmButton"
 
     playFieldConfirmText.textContent = ""
     playFieldConfirmButton.textContent = "CONFIRM"
@@ -330,10 +331,10 @@ function gameChoices() {
     selectChoiceRock.addEventListener("click", (event) => {
         event.preventDefault()
 
-        selectChoiceRock.id = "gameChoiceSelected"
-        selectChoicePaper.id = "gameChoiceNot"
-        selectChoiceScissors.id = "gameChoiceNot"
-        playFieldConfirmButton.id = "playFieldConfirmButtonSelected"
+        selectChoiceRock.className = "gameChoiceSelected"
+        selectChoicePaper.className = "gameChoiceNot"
+        selectChoiceScissors.className = "gameChoiceNot"
+        playFieldConfirmButton.className = "playFieldConfirmButtonSelected"
 
         gameChoiceRemover("rock")
         gameChoiceSelector("rock")
@@ -341,10 +342,10 @@ function gameChoices() {
     selectChoicePaper.addEventListener("click", (event) => {
         event.preventDefault()
 
-        selectChoiceRock.id = "gameChoiceNot"
-        selectChoicePaper.id = "gameChoiceSelected"
-        selectChoiceScissors.id = "gameChoiceNot"
-        playFieldConfirmButton.id = "playFieldConfirmButtonSelected"
+        selectChoiceRock.className = "gameChoiceNot"
+        selectChoicePaper.className = "gameChoiceSelected"
+        selectChoiceScissors.className = "gameChoiceNot"
+        playFieldConfirmButton.className = "playFieldConfirmButtonSelected"
 
         gameChoiceRemover("paper")
         gameChoiceSelector("paper")
@@ -353,10 +354,10 @@ function gameChoices() {
     selectChoiceScissors.addEventListener("click", (event) => {
         event.preventDefault()
 
-        selectChoiceRock.id = "gameChoiceNot"
-        selectChoicePaper.id = "gameChoiceNot"
-        selectChoiceScissors.id = "gameChoiceSelected"
-        playFieldConfirmButton.id = "playFieldConfirmButtonSelected"
+        selectChoiceRock.className = "gameChoiceNot"
+        selectChoicePaper.className = "gameChoiceNot"
+        selectChoiceScissors.className = "gameChoiceSelected"
+        playFieldConfirmButton.className = "playFieldConfirmButtonSelected"
 
         gameChoiceRemover("scissors")
         gameChoiceSelector("scissors")
@@ -367,13 +368,13 @@ function gameChoices() {
     playFieldConfirmButton.addEventListener("click", (event) => {
         if (rockChoice == false && paperChoice == false && scissorsChoice == false && warnChoice == false) {
 
-            playFieldConfirmText.id = "warnChoice"
+            playFieldConfirmText.className = "warnChoice"
             playFieldConfirmText.textContent = "Please select an Element!"
 
-            
+
             warnChoice = true
         }
-        else if (three == false && five == false && seven == false) { return}
+        else if (rockChoice == false && paperChoice == false && scissorsChoice == false) { return }
         else {
             if (warnChoice == true) {
                 playFieldConfirmText.textContent = ""
@@ -390,6 +391,7 @@ function gameInit() {
     getComputerChoice()
     winCondition(playerChoice, compChoice)
     compIconChanger()
+    roundChanger()
 }
 
 //Choice_Selector_______________________________________________________________________________________________
@@ -455,11 +457,11 @@ function getPlayerChoice() {
 }
 
 function getComputerChoice() {
-    randomNumber = Math.floor(Math.random() * 100)
-    if (randomNumber <= 33) {
+    randomNumber = Math.floor(Math.random() * 3)
+    if (randomNumber == 0) {
         compChoice = 1 //rock
     }
-    else if (randomNumber >= 34 && randomNumber <= 66) {
+    else if (randomNumber == 1) {
         compChoice = 2 //paper
     }
     else {
@@ -497,20 +499,61 @@ function winCondition(player, comp) {
 
 //Play_Field_Changer________________________________________________________________________________________
 
-function fieldChanger() {
+function roundChanger() {
+    playFieldConfirmBox.removeChild(playFieldConfirmButton)
+    playFieldConfirmBox.appendChild(playFieldChangeButton)
 
+    playFieldChangeButton.textContent = "NEXT ROUND"
+    playFieldChangeButton.className = "playFieldConfirmButtonSelected"
+
+    playFieldChangeButton.addEventListener("click", (event) => {
+        event.preventDefault()
+
+        playFieldConfirmBox.removeChild(playFieldChangeButton)
+
+        if (rockChoice == true) {
+            playFieldPlayerOne.removeChild(rockSpritePlayer)
+
+            rockChoice = false
+        }
+        else if (paperChoice == true) {
+            playFieldPlayerOne.removeChild(paperSpritePlayer)
+
+            paperChoice = false
+        }
+        else if (scissorsChoice == true) {
+            playFieldPlayerOne.removeChild(scissorsSpritePlayer)
+
+            scissorsChoice = false
+        }
+
+        if (compChoice == 1) {
+            playFieldPlayerTwo.removeChild(rockSpriteComp)
+        }
+        else if (compChoice == 2) {
+            playFieldPlayerTwo.removeChild(paperSpriteComp)
+        }
+        else if (compChoice == 3) {
+            playFieldPlayerTwo.removeChild(scissorsSpriteComp)
+        }
+        compChoice = 0
+        playerChoice = 0
+        warnChoice = false
+
+        scoreBoard()
+    })
 }
 
 //Play_Field_Comp_Icon________________________________________________________________________________________
 
 function compIconChanger() {
-    if (compChoice = 1) {
+    if (compChoice == 1) {
         playFieldPlayerTwo.appendChild(rockSpriteComp)
     }
-    else if (compChoice = 2) {
+    else if (compChoice == 2) {
         playFieldPlayerTwo.appendChild(paperSpriteComp)
     }
-    else {
+    else if (compChoice == 3) {
         playFieldPlayerTwo.appendChild(scissorsSpriteComp)
     }
 }
